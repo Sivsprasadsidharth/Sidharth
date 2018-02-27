@@ -1,0 +1,125 @@
+#include<math.h>
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node
+{
+ int coeff;
+ struct node *next;
+}node;
+node *h1=NULL,*h2=NULL,*h3=NULL;
+struct node *init();
+void read(node *h1);
+void print(node *h1);
+node *add(node *h1,node *h2);
+node *multiply();
+void main()
+{
+ 
+int op;
+do
+{ 
+ printf("\n1.Read first poly\n2.Read second poly\n3.Add\n4.Multiply\n");
+ scanf("%d",&op);
+ switch(op)
+ {
+  case 1:
+         h1=init();
+	 read(h1);break;
+  case 2:h2=init();
+	 read(h2);break;
+  case 3:h3=add(h1,h2);
+         print(h3);break;
+  case 4:printf("broo");
+         h3=multiply();
+         
+         print(h3);
+         break;
+  default:
+         printf("Invalid choice\n");
+  }
+ }while(op!=5);
+}
+void read(node *h)
+{
+ int n,i,j,po,coeff;
+ node1 *p;
+ p=init();
+ printf("Enter limit\n");
+ scanf("%d",&n);
+ for(i=0;i<=n;++i)
+ {
+  printf("Enter power\n");
+  scanf("%d",&po);
+  scanf("%d",&coeff);
+  for(p=h,j=0;j<po;j++)
+   p=p->next;
+  p->coeff=coeff;
+ }
+}
+void print(node *p)
+{
+ int i;
+ printf("The poly is");
+ for(i=0;p!=NULL;p=p->next,i++)
+ {
+  if(p->coeff!=0)
+   printf("%dx^%d ",p->coeff,i);
+  
+ }
+}
+node *add(node *h1,node *h2)
+{ 
+ node *h3,*p;
+ h3=init();
+ p=h3;
+ while(h1!=NULL)
+ {
+  h3->coeff=h1->coeff+h2->coeff;
+  h1=h1->next;
+  h2=h2->next;
+  h3=h3->next;
+ }
+ return(p);
+}
+node *multiply()
+{
+ node *p,*q,*r;
+ int i,j,k,co,po;
+ printf("heyy");
+ h3=init();
+ printf("hii");
+ for(p=h1,i=0;p!=NULL;p=p->next,i++)
+ {
+  printf("hello");
+  for(q=h2,j=0;q!=NULL;q=q->next,j++)
+  {
+   co=p->coeff*q->coeff;
+   po=i+j;
+   for(r=h3,k=0;k<po;k++ )
+    r=r->next;
+   r->coeff=r->coeff+co;
+  }
+ 
+}
+return(h3);
+}
+node *init()
+{
+ int i;
+ node *h=NULL,*p;
+ for(i=0;i<1000;i++)
+ {
+  p=(node*)malloc(sizeof(node));
+  p->next=h;
+  p->coeff=0;
+  h=p;
+ }
+ return h;
+}
+ 
+
+
+
+
+
+

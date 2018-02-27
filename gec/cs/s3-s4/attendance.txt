@@ -1,0 +1,6 @@
+R.no   Name   D1    D2    D3
+
+1      aaaa    X    --    X
+2      abbb    --   --    --
+3      bcda    X    X     X
+4      sdknsre X    X     X
